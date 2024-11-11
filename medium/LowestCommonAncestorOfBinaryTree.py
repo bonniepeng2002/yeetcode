@@ -15,6 +15,8 @@ class Solution:
 
         while unvisited:
             curr = unvisited.pop()
+            if not curr:
+                continue
             visited.append(curr)
 
             if curr == dest:
@@ -45,12 +47,10 @@ class Solution:
         pathToQ = self.findPath(root, q)
         pathToP = self.findPath(root, p)
 
-        print(pathToQ)
-        print(pathToP)
-
         # find first common element
-        for i in pathToQ:
-            if i in pathToP:
+        setQ = set(pathToQ)
+        for i in pathToP:
+            if i in setQ:
                 return i
 
         return None
